@@ -320,3 +320,68 @@ function multiply(a, b) {
 var multiplyByTwo = multiply.bind(this, 2)
 
 console.log(multiplyByTwo(4))
+
+
+
+// ---------------------Functional Programming-------------------- //
+
+
+// Without functional programming
+
+var dummyArr1 = [1, 2, 3]
+
+var dummyArr2 = []
+for(var i=0; i <  dummyArr1.length; i++) {
+    dummyArr2.push( dummyArr1[i] * 2)
+}
+
+console.log(dummyArr2) 
+
+
+
+// With funcitonal programming
+
+function mapForEach(arr, fn) {
+    var newArr = []
+    for(var i=0; i < arr.length; i++) {
+        newArr.push(
+            fn(arr[i])
+        )
+    }
+
+    return newArr
+}
+
+var arr1 = [1, 2, 3]
+
+var arr2 = mapForEach(arr1, function(item) {
+    return item * 2
+})
+
+console.log(arr2)
+
+var arr3 = mapForEach(arr1, function(item) {
+    return item > 2
+})
+
+console.log(arr3)
+
+var checkPastLimit = function(limiter, item) {
+    return item > limiter
+}
+
+var arr4  = mapForEach(arr1, checkPastLimit.bind(this, 1))
+console.log(arr4)
+
+// Simplified with functional programming and callback
+
+var limitMakerFunc = function(limiter) {
+    return function(limiter, item) {
+        return item > limiter
+    }.bind(this, 1)
+}
+
+
+var arr5  = mapForEach(arr1, limitMakerFunc(1))
+
+console.log(arr5)
