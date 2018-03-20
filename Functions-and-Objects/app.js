@@ -174,7 +174,7 @@ function meet(whattosay) {
 
 meet('Hi')('Toncy')
 
-// PROBLEM 1
+// Closue : Problem 1
 
 function buildFunction() {
     var arr = []
@@ -241,3 +241,82 @@ var fs3 = buildFunction3()
 fs3[0]()
 fs3[1]()
 fs3[2]()
+
+
+// Closure : Example 2
+
+function makeGreeting(language) {
+    return function(firstName, lastName) {
+        if (language === 'en') {
+            console.log('Hello ' + firstName + ' ' + lastName)
+        } else if ( language === 'es') {
+            console.log('Hola ' + firstName + ' ' + lastName)
+        }
+    }
+}
+
+var greetEnglish = makeGreeting('en')
+var greetSpanish = makeGreeting('es')
+
+greetEnglish('John', 'Doe')
+greetSpanish('John', 'Doe')
+
+
+// ---------------------CALLBACK-------------------- //
+
+function callBackFunciton(theCallback) {
+    var a = 10000
+    var b = 20
+
+    theCallback()
+}
+
+callBackFunciton(function() {
+    console.log('I have been called!')
+})
+
+
+// ---------------------Call - Apply - Bind-------------------- //
+
+
+var randomPerson = {
+    firstName: 'Jo',
+    lastName: 'na Hill',
+    getFullName: function() {
+        var fullName = this.firstName + this.lastName
+        return fullName
+    }
+}
+
+var logName = function(lang1, lang2) {
+    console.log('Logged ' + this.getFullName())
+    console.log('Arguments: ' + lang1 + ' ' + lang2)
+    console.log('------------------------------')
+}
+
+var logPersonName = logName.bind(randomPerson)
+
+logPersonName()
+
+logName.call(randomPerson, 'en', 'es')
+
+logName.apply(randomPerson, ['en', 'es'])
+
+// Function Borrowing
+
+var randomPerson2 = {
+    firstName: 'Lepud',
+    lastName: ' Shepud'
+}
+
+console.log(randomPerson.getFullName.apply(randomPerson2))
+
+// Function Currrying
+
+function multiply(a, b) {
+    return a * b
+}
+
+var multiplyByTwo = multiply.bind(this, 2)
+
+console.log(multiplyByTwo(4))
