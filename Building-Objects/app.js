@@ -14,7 +14,6 @@ if(!Object.create) {
 
 
 
-
 // Function Constructor - 'new'
 
 function Person(firstname, lastname) {
@@ -36,8 +35,6 @@ console.log(jane)
 
 // Function Constructor - Object.create
 
-
-
 var hooman = {
     firstName: 'Default',
     lastName: 'Default',
@@ -51,4 +48,4 @@ var carl = Object.create(hooman)
 carl.firstName = 'Carl'
 carl.lastName = 'Doe'
 
-console.log(carl.greet())
+console.log(carl.greet()) 
