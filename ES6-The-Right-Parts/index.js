@@ -22,10 +22,10 @@ obj.foo(); // underfined without bind
 var obj2 = {
   id: 42,
   foo: function foo() {
-    setTimeout(() => {
-      console.log('arrow functions! ' + this.id)
-    },1000);
+    setTimeout(() => 
+      console.log('Arrow functions! ' + this.id)
+    ,1000);
   }
 };
 
-obj2.foo(); // underfined without bind
+obj2.foo(); // Arrow funtions this points to lexically upwords and finds the this in that scope and uses it
